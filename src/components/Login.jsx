@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -11,9 +11,9 @@ const Signup = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/v1/signup', {
+      const response = await fetch('http://localhost:4000/api/v1/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password, isSubscribing: true }),
+        body: JSON.stringify({ email, password }),
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const Signup = () => {
 
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -56,10 +56,10 @@ const Signup = () => {
           onChange={e => setIsSubscribing(e.target.isSubscribing)}
         /> */}
         <div className="error newsletter"></div>
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default Login;
