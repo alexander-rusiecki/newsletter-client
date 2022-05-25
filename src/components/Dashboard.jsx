@@ -1,7 +1,60 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const [email, setEmail] = useState('');
+  const [subscriber, setSubscriber] = useState(null);
+
+  const getSubscription = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/v1/dashboard', {
+        credentials: 'include',
+      });
+      const data = await response.json();
+      setEmail(data.user.email);
+      setSubscriber(data.user.isSubscribing);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateSubscription = async e => {
+    e.preventDefault();
+    setSubscriber(!subscriber);
+    console.log(subscriber);
+    try {
+      await fetch('http://localhost:4000/api/v1/dashboard', {
+        method: 'PATCH',
+        body: JSON.stringify({ isSubscribing: subscriber }),
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSubscription();
+  }, [email]);
+
+  return (
+    <div>
+      {email && (
+        <div>
+          <h1>Welcome {email}</h1>
+          {!subscriber ? (
+            <h2>You are subscribed</h2>
+          ) : (
+            <h2>You are not subscribed</h2>
+          )}
+          <p>would you like to unsubscribe?</p>
+          <button onClick={updateSubscription}>change</button>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Dashboard;

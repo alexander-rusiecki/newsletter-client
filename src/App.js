@@ -1,7 +1,8 @@
 function App() {
   return (
-    <div>
-      <h1>Do you want my newsletter?</h1>
+    <div className="home-container">
+      <h3>Do you want my newsletter?</h3>
+      <h3>Login or register!</h3>
     </div>
   );
 }

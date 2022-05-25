@@ -1,19 +1,23 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const checkboxRef = useRef();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [isSubscribing, setIsSubscribing] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:4000/api/v1/signup', {
         method: 'POST',
-        body: JSON.stringify({ email, password, isSubscribing: true }),
+        body: JSON.stringify({
+          email,
+          password,
+          isSubscribing: checkboxRef.current.checked,
+        }),
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +33,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Signup</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
@@ -48,13 +52,8 @@ const Signup = () => {
           onChange={e => setPassword(e.target.value)}
         />
         <div className="error password"></div>
-        {/* <label htmlFor="newsletter">Newsletter</label>
-        <input
-          type="checkbox"
-          name="newsletter"
-          checked={isSubscribing}
-          onChange={e => setIsSubscribing(e.target.isSubscribing)}
-        /> */}
+        <label htmlFor="newsletter">Newsletter</label>
+        <input type="checkbox" name="newsletter" ref={checkboxRef} />
         <div className="error newsletter"></div>
         <button type="submit">Signup</button>
       </form>
