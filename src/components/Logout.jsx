@@ -16,7 +16,7 @@ const Logout = () => {
   }, []);
 
   return (
-    <div>
+    <div className="logout-container">
       {logoutMsg && (
         <>
           <h1>{logoutMsg.msg}</h1>

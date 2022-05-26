@@ -20,7 +20,6 @@ const Dashboard = () => {
   const updateSubscription = async e => {
     e.preventDefault();
     setSubscriber(!subscriber);
-    console.log(subscriber);
     try {
       await fetch('http://localhost:4000/api/v1/dashboard', {
         method: 'PATCH',
@@ -40,17 +39,18 @@ const Dashboard = () => {
   }, [email]);
 
   return (
-    <div>
+    <div className="dashboard-container">
       {email && (
         <div>
           <h1>Welcome {email}</h1>
-          {!subscriber ? (
+          {subscriber ? (
             <h2>You are subscribed</h2>
           ) : (
             <h2>You are not subscribed</h2>
           )}
-          <p>would you like to unsubscribe?</p>
-          <button onClick={updateSubscription}>change</button>
+          <button onClick={updateSubscription}>
+            {subscriber ? 'unsubscribe' : 'subscribe'}
+          </button>
         </div>
       )}
     </div>
