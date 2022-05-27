@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [isSubscribing, setIsSubscribing] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -20,7 +18,7 @@ const Login = () => {
         },
       });
       const data = await response.json();
-      if (data.user) {
+      if (data) {
         navigate('/dashboard');
       }
     } catch (error) {
@@ -39,7 +37,6 @@ const Login = () => {
           required
           onChange={e => setEmail(e.target.value)}
         />
-        <div className="error email"></div>
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -47,15 +44,6 @@ const Login = () => {
           required
           onChange={e => setPassword(e.target.value)}
         />
-        <div className="error password"></div>
-        {/* <label htmlFor="newsletter">Newsletter</label>
-        <input
-          type="checkbox"
-          name="newsletter"
-          checked={isSubscribing}
-          onChange={e => setIsSubscribing(e.target.isSubscribing)}
-        /> */}
-        <div className="error newsletter"></div>
         <button type="submit">Login</button>
       </form>
     </div>

@@ -10,8 +10,8 @@ const Dashboard = () => {
         credentials: 'include',
       });
       const data = await response.json();
-      setEmail(data.user.email);
-      setSubscriber(data.user.isSubscribing);
+      setEmail(data.email);
+      setSubscriber(data.isSubscribing);
     } catch (error) {
       console.log(error);
     }
@@ -19,16 +19,17 @@ const Dashboard = () => {
 
   const updateSubscription = async e => {
     e.preventDefault();
-    setSubscriber(!subscriber);
     try {
-      await fetch('http://localhost:4000/api/v1/dashboard', {
+      const response = await fetch('http://localhost:4000/api/v1/dashboard', {
         method: 'PATCH',
-        body: JSON.stringify({ isSubscribing: subscriber }),
+        body: JSON.stringify({ isSubscribing: !subscriber }),
         credentials: 'include',
         headers: {
           'Content-type': 'application/json',
         },
       });
+      const data = await response.json();
+      setSubscriber(data.isSubscribing);
     } catch (error) {
       console.log(error);
     }

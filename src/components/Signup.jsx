@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const navigate = useNavigate();
   const checkboxRef = useRef();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,7 +23,7 @@ const Signup = () => {
         },
       });
       const data = await response.json();
-      if (data.user) {
+      if (data) {
         navigate('/dashboard');
       }
     } catch (error) {
