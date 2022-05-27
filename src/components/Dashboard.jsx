@@ -9,8 +9,6 @@ const Dashboard = () => {
       const response = await fetch(
         'https://newsletter-app-server.herokuapp.com/api/v1/dashboard',
         {
-          mode: 'cors',
-
           credentials: 'include',
         }
       );
@@ -28,8 +26,6 @@ const Dashboard = () => {
       const response = await fetch(
         'https://newsletter-app-server.herokuapp.com/api/v1/dashboard',
         {
-          mode: 'cors',
-
           method: 'PATCH',
           body: JSON.stringify({ isSubscribing: !subscriber }),
           credentials: 'include',
