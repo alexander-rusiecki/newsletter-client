@@ -6,9 +6,12 @@ const Dashboard = () => {
 
   const getSubscription = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/v1/dashboard', {
-        credentials: 'include',
-      });
+      const response = await fetch(
+        'https://newsletter-app-server.herokuapp.com/api/v1/dashboard',
+        {
+          credentials: 'include',
+        }
+      );
       const data = await response.json();
       setEmail(data.email);
       setSubscriber(data.isSubscribing);
@@ -20,14 +23,17 @@ const Dashboard = () => {
   const updateSubscription = async e => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/v1/dashboard', {
-        method: 'PATCH',
-        body: JSON.stringify({ isSubscribing: !subscriber }),
-        credentials: 'include',
-        headers: {
-          'Content-type': 'application/json',
-        },
-      });
+      const response = await fetch(
+        'https://newsletter-app-server.herokuapp.com/api/v1/dashboard',
+        {
+          method: 'PATCH',
+          body: JSON.stringify({ isSubscribing: !subscriber }),
+          credentials: 'include',
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
       const data = await response.json();
       setSubscriber(data.isSubscribing);
     } catch (error) {
