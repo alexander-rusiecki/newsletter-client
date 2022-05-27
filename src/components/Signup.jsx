@@ -27,7 +27,7 @@ const Signup = () => {
       );
       const data = await response.json();
       if (data) {
-        navigate('/dashboard');
+        navigate('#/dashboard');
       }
     } catch (error) {
       console.log(error);
