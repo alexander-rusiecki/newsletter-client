@@ -11,16 +11,16 @@ const Layout = () => {
             </li>
             <div className="auth-links">
               <li>
-                <Link to="/newsletter-client/login">Login</Link>
+                <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/newsletter-client/signup">Signup</Link>
+                <Link to="/signup">Signup</Link>
               </li>
               <li>
-                <Link to="/newsletter-client/logout">Logout</Link>
+                <Link to="/logout">Logout</Link>
               </li>
               <li>
-                <Link to="/newsletter-client/dashboard/">Dashboard</Link>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
             </div>
           </ul>
