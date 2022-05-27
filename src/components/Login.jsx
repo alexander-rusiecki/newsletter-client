@@ -9,18 +9,14 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        'https://newsletter-app-server.herokuapp.com/api/v1/login',
-        {
-          method: 'POST',
-          body: JSON.stringify({ email, password }),
-          credentials: 'include',
-
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await fetch('http://localhost:4000/api/v1/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       const data = await response.json();
       if (data) {
         navigate('/dashboard');
@@ -36,7 +32,7 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
-          type="text"
+          type="email"
           name="email"
           required
           onChange={e => setEmail(e.target.value)}
