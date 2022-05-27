@@ -27,9 +27,7 @@ const Signup = () => {
       );
       const data = await response.json();
       if (data) {
-        navigate(
-          'https://alexander-rusiecki.github.io/newsletter-client/dashboard'
-        );
+        navigate('/dashboard');
       }
     } catch (error) {
       console.log(error);
