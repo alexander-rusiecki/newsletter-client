@@ -19,6 +19,8 @@ const Signup = () => {
             password,
             isSubscribing: checkboxRef.current.checked,
           }),
+          credentials: 'include',
+
           headers: {
             'Content-Type': 'application/json',
           },
