@@ -23,7 +23,9 @@ const Logout = () => {
       {logoutMsg && (
         <>
           <h1>{logoutMsg.msg}</h1>
-          <Link to="/">Home</Link>
+          <Link to="https://alexander-rusiecki.github.io/newsletter-client">
+            Home
+          </Link>
         </>
       )}
     </div>

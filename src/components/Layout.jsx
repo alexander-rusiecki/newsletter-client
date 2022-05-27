@@ -11,16 +11,24 @@ const Layout = () => {
             </li>
             <div className="auth-links">
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="https://alexander-rusiecki.github.io/newsletter-client/login">
+                  Login
+                </Link>
               </li>
               <li>
-                <Link to="/signup">Signup</Link>
+                <Link to="https://alexander-rusiecki.github.io/newsletter-client/signup">
+                  Signup
+                </Link>
               </li>
               <li>
-                <Link to="/logout">Logout</Link>
+                <Link to="https://alexander-rusiecki.github.io/newsletter-client/logout">
+                  Logout
+                </Link>
               </li>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="https://alexander-rusiecki.github.io/newsletter-client/dashboard/">
+                  Dashboard
+                </Link>
               </li>
             </div>
           </ul>

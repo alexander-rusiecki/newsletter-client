@@ -22,7 +22,9 @@ const Login = () => {
       );
       const data = await response.json();
       if (data) {
-        navigate('/dashboard');
+        navigate(
+          'https://alexander-rusiecki.github.io/newsletter-client/dashboard'
+        );
       }
     } catch (error) {
       console.log(error);
