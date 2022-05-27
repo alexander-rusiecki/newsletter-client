@@ -11,7 +11,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        'https://newsletter-app-server.herokuapp.com/signup',
+        'https://newsletter-app-server.herokuapp.com/api/v1/signup',
         {
           method: 'POST',
           body: JSON.stringify({

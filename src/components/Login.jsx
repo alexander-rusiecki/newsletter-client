@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        'https://newsletter-app-server.herokuapp.com/login',
+        'https://newsletter-app-server.herokuapp.com/api/v1/login',
         {
           method: 'POST',
           body: JSON.stringify({ email, password }),
