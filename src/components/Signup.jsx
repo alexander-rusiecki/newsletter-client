@@ -13,6 +13,8 @@ const Signup = () => {
       const response = await fetch(
         'https://newsletter-app-server.herokuapp.com/api/v1/signup',
         {
+          mode: 'cors',
+
           method: 'POST',
           body: JSON.stringify({
             email,

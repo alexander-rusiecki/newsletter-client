@@ -12,6 +12,7 @@ const Login = () => {
       const response = await fetch(
         'https://newsletter-app-server.herokuapp.com/api/v1/login',
         {
+          mode: 'cors',
           method: 'POST',
           body: JSON.stringify({ email, password }),
           credentials: 'include',

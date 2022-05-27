@@ -8,6 +8,8 @@ const Logout = () => {
     const response = await fetch(
       'https://newsletter-app-server.herokuapp.com/api/v1/logout',
       {
+        mode: 'cors',
+
         credentials: 'include',
       }
     );
