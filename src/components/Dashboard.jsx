@@ -45,7 +45,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getSubscription();
-  }, [subscriber]);
+  }, []);
 
   return (
     <div className="dashboard-container">
