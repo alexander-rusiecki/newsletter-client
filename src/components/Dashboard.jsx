@@ -30,7 +30,9 @@ const Dashboard = () => {
           body: JSON.stringify({ isSubscribing: !subscriber }),
           credentials: 'include',
           headers: {
-            'Content-type': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':
+              'https://jocular-bavarois-669d23.netlify.app',
           },
         }
       );

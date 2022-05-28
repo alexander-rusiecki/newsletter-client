@@ -7,8 +7,14 @@ const Logout = () => {
   const clearCookie = async () => {
     const response = await fetch(
       'https://newsletter-app-server.herokuapp.com/api/v1/logout',
+
       {
         credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':
+            'https://jocular-bavarois-669d23.netlify.app',
+        },
       }
     );
     const data = await response.json();
