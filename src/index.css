@@ -65,7 +65,8 @@ main {
   justify-content: center;
 }
 
-main h1 {
+main h1,
+main p {
   text-align: center;
 }
 
@@ -123,4 +124,8 @@ button:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+p {
+  color: red;
 }

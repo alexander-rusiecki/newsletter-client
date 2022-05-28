@@ -5,24 +5,25 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        'https://newsletter-app-server.herokuapp.com/api/v1/login',
-        {
-          method: 'POST',
-          body: JSON.stringify({ email, password }),
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await fetch('http://localhost:4000/api/v1/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       const data = await response.json();
-      if (data) {
+      if (data.email) {
         navigate('/dashboard');
+      }
+      if (data.errorMsg) {
+        setErrorMsg(data.errorMsg);
       }
     } catch (error) {
       console.log(error);
@@ -32,6 +33,7 @@ const Login = () => {
   return (
     <div className="form-container">
       <h1>Login</h1>
+      {errorMsg && <p>{errorMsg}</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input

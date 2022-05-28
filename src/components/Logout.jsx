@@ -5,12 +5,9 @@ const Logout = () => {
   const [logoutMsg, setLogoutMsg] = useState('');
 
   const clearCookie = async () => {
-    const response = await fetch(
-      'https://newsletter-app-server.herokuapp.com/api/v1/logout',
-      {
-        credentials: 'include',
-      }
-    );
+    const response = await fetch('http://localhost:4000/api/v1/logout', {
+      credentials: 'include',
+    });
     const data = await response.json();
     setLogoutMsg(data);
   };
@@ -23,9 +20,9 @@ const Logout = () => {
       {logoutMsg && (
         <>
           <h1>{logoutMsg.msg}</h1>
-          <Link to="/">Home</Link>
         </>
       )}
+      <Link to="/">Back to Home page</Link>
     </div>
   );
 };

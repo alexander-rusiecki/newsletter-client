@@ -6,28 +6,32 @@ const Signup = () => {
   const checkboxRef = useRef();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        'https://newsletter-app-server.herokuapp.com/api/v1/signup',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email,
-            password,
-            isSubscribing: checkboxRef.current.checked,
-          }),
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await fetch('http://localhost:4000/api/v1/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password,
+          isSubscribing: checkboxRef.current.checked,
+        }),
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       const data = await response.json();
-      if (data) {
+      if (data.email) {
         navigate('/dashboard');
+      }
+      if (data.errorMsg.startsWith('E11000')) {
+        setErrorMsg('Email already exists');
+      }
+      if (data.errorMsg.includes('password')) {
+        setErrorMsg('Password must contain at least 8 characters');
       }
     } catch (error) {
       console.log(error);
@@ -37,6 +41,7 @@ const Signup = () => {
   return (
     <div className="form-container">
       <h1>Signup</h1>
+      {errorMsg && <p>{errorMsg}</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
