@@ -40,11 +40,11 @@ const Dashboard = () => {
 
   useEffect(() => {
     getSubscription();
-  }, []);
+  }, [subscriber]);
 
   return (
     <div className="dashboard-container">
-      {email && (
+      {email && subscriber && (
         <div>
           <h1>Welcome {email}</h1>
           <h2>You are {!subscriber && 'not'} subscribing</h2>
