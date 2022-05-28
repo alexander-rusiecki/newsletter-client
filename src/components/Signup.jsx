@@ -23,8 +23,6 @@ const Signup = () => {
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin':
-              'https://jocular-bavarois-669d23.netlify.app',
           },
         }
       );
