@@ -10,4 +10,4 @@
 - npm install
 - npm start
 
-[Live demo](https://alexander-rusiecki.github.io/newsletter-client/)
+[Live demo](https://gregarious-bonbon-c3bcda.netlify.app/)
