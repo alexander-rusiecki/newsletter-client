@@ -27,7 +27,7 @@ const Signup = () => {
         }
       );
       const data = await response.json();
-      if (data.email) {
+      if (data.email && data.isSubscribing) {
         navigate('/dashboard');
       }
       if (data.errorMsg.startsWith('E11000')) {
