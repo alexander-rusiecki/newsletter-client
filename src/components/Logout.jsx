@@ -6,7 +6,7 @@ const Logout = () => {
 
   const clearCookie = async () => {
     const response = await fetch(
-      'http://localhost:4000/api/v1/logout',
+      'https://newsletter-app-server.herokuapp.com/api/v1/logout',
 
       {
         credentials: 'include',
