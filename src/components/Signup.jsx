@@ -6,7 +6,7 @@ const Signup = () => {
   const checkboxRef = useRef();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -27,17 +27,16 @@ const Signup = () => {
         }
       );
       const data = await response.json();
-      if (data) {
+      if (data.email) {
         navigate('/dashboard');
       }
-      // if (data.errorMsg) {
-      //   if (data.errorMsg.startsWith('E11000')) {
-      //     setErrorMsg('Email already exists');
-      //   }
-      //   if (data.errorMsg.includes('password')) {
-      //     setErrorMsg('Password must contain at least 8 characters');
-      //   }
-      // }
+      if (data.errorMsg) {
+        if (data.errorMsg.startsWith('E11000')) {
+          setErrorMsg('Email already exists');
+        } else if (data.errorMsg.includes('password')) {
+          setErrorMsg('Password must contain at least 8 characters');
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +45,7 @@ const Signup = () => {
   return (
     <div className="form-container">
       <h1>Signup</h1>
-      {/* {errorMsg && <p>{errorMsg}</p>} */}
+      {errorMsg && <p>{errorMsg}</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
