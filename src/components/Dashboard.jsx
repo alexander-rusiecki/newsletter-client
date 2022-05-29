@@ -7,7 +7,10 @@ const Dashboard = () => {
   const getSubscription = async () => {
     try {
       const response = await fetch(
-        'https://newsletter-app-server.herokuapp.com/api/v1/dashboard'
+        'https://newsletter-app-server.herokuapp.com/api/v1/dashboard',
+        {
+          credentials: 'include',
+        }
       );
       const data = await response.json();
       setEmail(data.email);
